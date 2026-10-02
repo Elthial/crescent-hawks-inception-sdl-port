@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemata.jklnet.org/Reko/v5">
+  <arch>x86-real-16</arch>
+  <platform>ms-dos</platform>
+  <input>
+    <filename>BTECH.EXE</filename>
+    <asmDir>BTECH.reko</asmDir>
+    <srcDir>BTECH.reko</srcDir>
+    <includeDir>BTECH.reko</includeDir>
+    <resources>BTECH.reko\resources</resources>
+    <user>
+      <processor />
+      <procedure name="Mech string references - Locust / Wasp / Chameleon Selection?">
+        <characteristics />
+        <address>1CD3:0004</address>
+      </procedure>
+      <procedure name="Big jump statement">
+        <characteristics />
+        <address>1E56:0D1D</address>
+      </procedure>
+      <procedure name="Keyboard input checking?">
+        <characteristics />
+        <address>1F3D:0259</address>
+      </procedure>
+      <procedure name="Switch statement?">
+        <characteristics />
+        <address>1F3D:031C</address>
+      </procedure>
+      <procedure name="DOS file operations manager? #2">
+        <characteristics />
+        <address>1F3D:063B</address>
+      </procedure>
+      <procedure name="DOS file operations manager?">
+        <characteristics />
+        <address>1F3D:0814</address>
+      </procedure>
+      <procedure name="fn204B_0020  - odd code #1">
+        <characteristics />
+        <address>204B:0020</address>
+      </procedure>
+      <procedure name="fn204B_003C - odd code #2">
+        <characteristics />
+        <address>204B:003C</address>
+      </procedure>
+      <procedure name="Vector and output to I/O port 40, 43 #2">
+        <characteristics />
+        <address>204B:0048</address>
+      </procedure>
+      <procedure name="Vector and output to I/O port 40, 43">
+        <characteristics />
+        <address>204B:0091</address>
+      </procedure>
+      <procedure name="Timer 8253-5">
+        <characteristics />
+        <address>204B:00B2</address>
+      </procedure>
+      <procedure name="PC Speaker ON">
+        <characteristics />
+        <address>204B:00BD</address>
+      </procedure>
+      <procedure name="PC Speaker OFF">
+        <characteristics />
+        <address>204B:00C6</address>
+      </procedure>
+      <procedure name="DMA controller, 8237A-5 #3">
+        <characteristics />
+        <address>204B:0160</address>
+      </procedure>
+      <procedure name="DMA controller, 8237A-5 #2">
+        <characteristics />
+        <address>204B:01B8</address>
+      </procedure>
+      <procedure name="DMA controller, 8237A-5">
+        <characteristics />
+        <address>204B:020B</address>
+      </procedure>
+      <procedure name="fn204B_0233">
+        <address>204B:0233</address>
+      </procedure>
+      <procedure name="fn204B_024F">
+        <address>204B:024F</address>
+      </procedure>
+      <procedure name="fn204B_0298">
+        <address>204B:0298</address>
+      </procedure>
+      <procedure name="Timer 8253-5">
+        <characteristics />
+        <address>207F:001C</address>
+      </procedure>
+      <procedure name="PC Speaker ON - ptr freq">
+        <characteristics />
+        <address>207F:0030</address>
+      </procedure>
+      <procedure name="PC Speaker OFF - 246Ch freq">
+        <characteristics />
+        <address>207F:0051</address>
+      </procedure>
+      <procedure name="PC Speaker OFF - 246Ch freq #2">
+        <characteristics />
+        <address>207F:0067</address>
+      </procedure>
+      <procedure name="Pc Speaker XOR - ptr freq">
+        <characteristics />
+        <address>207F:007D</address>
+      </procedure>
+      <procedure name="DOS - Select Disk">
+        <characteristics />
+        <address>207F:014C</address>
+      </procedure>
+      <procedure name="DOS Keyboard Direct IO">
+        <characteristics />
+        <address>207F:0213</address>
+      </procedure>
+      <procedure name="EGA registers #4?">
+        <characteristics />
+        <address>207F:0260</address>
+      </procedure>
+      <procedure name="EGA graphics #3?">
+        <characteristics />
+        <address>207F:0313</address>
+      </procedure>
+      <procedure name="EGA graphics registers #2?">
+        <characteristics />
+        <address>207F:0377</address>
+      </procedure>
+      <procedure name="EGA registers #4?">
+        <characteristics />
+        <address>207F:05D0</address>
+      </procedure>
+      <procedure name="EGA register #3?">
+        <characteristics />
+        <address>207F:0780</address>
+      </procedure>
+      <procedure name="EGA graphics registers?">
+        <characteristics />
+        <address>207F:0A76</address>
+      </procedure>
+      <procedure name="Small video status bits">
+        <characteristics />
+        <address>207F:0B26</address>
+      </procedure>
+      <procedure name="Video Status check?">
+        <characteristics />
+        <address>207F:0B40</address>
+      </procedure>
+      <procedure name="BIOS video set mode?">
+        <characteristics />
+        <address>207F:0B73</address>
+      </procedure>
+      <procedure name="BIOS Keyboard Read Character">
+        <characteristics />
+        <address>207F:0B8A</address>
+      </procedure>
+      <procedure name="BIOS Video set CGA palette">
+        <characteristics />
+        <address>207F:0BA7</address>
+      </procedure>
+      <procedure name="BIOS Video Calls">
+        <characteristics />
+        <address>207F:0FEE</address>
+      </procedure>
+      <procedure name="EGA graphics and registers">
+        <characteristics />
+        <address>207F:1E37</address>
+      </procedure>
+      <procedure name="Interrupt Flag - Set">
+        <characteristics />
+        <address>207F:1F9C</address>
+      </procedure>
+      <procedure name="Interrupt Flag - Clear">
+        <characteristics />
+        <address>207F:1FAD</address>
+      </procedure>
+      <procedure name="EGA registers #2?">
+        <characteristics />
+        <address>207F:1FBE</address>
+      </procedure>
+      <procedure name="EGA registers?">
+        <characteristics />
+        <address>207F:2251</address>
+      </procedure>
+      <procedure>
+        <address>207F:2D82</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="DOS get and set interrupt vector?">
+        <characteristics />
+        <address>207F:2E3B</address>
+      </procedure>
+      <procedure name="fn207F_2F2B">
+        <address>207F:2F2B</address>
+      </procedure>
+      <procedure name="DOS close file and terminate?">
+        <characteristics />
+        <address>207F:2F5A</address>
+      </procedure>
+      <procedure name="DOS Terminate with Exit code">
+        <characteristics>
+          <terminates>true</terminates>
+        </characteristics>
+        <address>207F:2F65</address>
+      </procedure>
+      <procedure name="DOS write file?">
+        <characteristics />
+        <address>207F:3275</address>
+      </procedure>
+      <procedure name="DOS close file?">
+        <characteristics />
+        <address>207F:3336</address>
+      </procedure>
+      <procedure name="DOS set file position?">
+        <characteristics />
+        <address>207F:3356</address>
+      </procedure>
+      <procedure name="DOS open and close file?">
+        <characteristics />
+        <address>207F:33D0</address>
+      </procedure>
+      <procedure name="DOS read file">
+        <characteristics />
+        <address>207F:3580</address>
+      </procedure>
+      <procedure name="DOS set file position?">
+        <characteristics />
+        <address>207F:366A</address>
+      </procedure>
+      <procedure name="DOS write file?">
+        <characteristics />
+        <address>207F:3777</address>
+      </procedure>
+      <annotation addr="0D27:0044">Taking Base pointer from previous function and store on stack.</annotation>
+      <annotation addr="0D27:0045">The top of the stack for our prev function (caller) is base ptr</annotation>
+      <annotation addr="11B8:11E4">t complete.  You need to come up with s</annotation>
+      <annotation addr="207F:2F65">DOS Exit location</annotation>
+      <annotation addr="207F:103F">BIOS Video Services
+VIDEO - SET INDIVIDUAL DAC REGISTER (VGA/MCGA)
+
+AX = 1010h
+BX = register number
+CH = new value for green (0-63)
+CL = new value for blue (0-63)
+DH = new value for red (0-63)</annotation>
+      <annotation addr="207F:1031">BIOS Video Services
+Set video mode AH = ah ^ ah = 00h</annotation>
+      <annotation addr="207F:0BB9">BIOS Video Services
+Set palette AH=0Bh, BH = 01h
+
+VIDEO - SET COLOR PALETTE
+BH = 00h, BL = border color
+BH = 01h, BL = palette (0-3)</annotation>
+      <annotation addr="207F:0B97">BIOS Keyboard Service
+Read Character 0h = xor ah,ah = 0h
+
+KEYBOARD - READ CHAR FROM BUFFER, WAIT IF EMPTY
+Return: AH = scan code, AL = character</annotation>
+      <annotation addr="207F:0B83">BIOS Video Services
+Set Video Mode ah = 00h
+AL = mode</annotation>
+      <annotation addr="207F:3553">DOS Close File with Handle
+BX = file handle</annotation>
+      <annotation addr="207F:35AC">DOS Read from file with handle
+BX = handle, Cx = bytes to read
+DS:DX =&gt; buffer</annotation>
+      <annotation addr="207F:1014">CH = new value for green (0-63)</annotation>
+      <annotation addr="207F:101F">CL = new value for blue (0-63)</annotation>
+      <annotation addr="207F:102A">DH = new value for red (0-63)
+EGA memory address? A0000:0000h 460p?</annotation>
+      <annotation addr="207F:1046">For bx &lt; 10 loop
+Increment bx++
+Jump to 207f:1005h</annotation>
+      <annotation addr="207F:1005">For Loop start (BX &lt; 10)</annotation>
+      <annotation addr="1F3D:0355">Switch statement</annotation>
+      <annotation addr="207F:364B">DOS - 2+ - MOVE FILE READ/WRITE POINTER (LSEEK)
+AL = method: offset from present location</annotation>
+      <annotation addr="207F:366A">New function</annotation>
+      <annotation addr="207F:3624">DOS - 2+ - READ FROM FILE WITH HANDLE
+BX = file handle, CX = number of bytes to read
+DS:DX -&gt; buffer</annotation>
+      <annotation addr="207F:3617">DOS - 2+ - IOCTL - GET DEVICE INFORMATION
+BX = file or device handle</annotation>
+      <annotation addr="207F:346A">DOS - 2+ - GET FILE ATTRIBUTES
+DS:DX -&gt; ASCIZ file name or directory
+name without trailing slash</annotation>
+      <annotation addr="207F:3461">DOS - 2+ - CLOSE A FILE WITH HANDLE
+BX = file handle</annotation>
+      <annotation addr="207F:341A">BX &lt;-- AX
+AX --&gt; BX
+Value swap
+BX = file handle</annotation>
+      <annotation addr="207F:3403">DOS - 2+ - OPEN DISK FILE WITH HANDLE
+DS:DX -&gt; ASCIZ filename
+AL = access mode
+0 - read, 1 - write, 2 - read &amp; write</annotation>
+      <annotation addr="207F:3427">DOS - 2+ - CLOSE A FILE WITH HANDLE
+BX = file handle</annotation>
+      <annotation addr="207F:3435">DOS - 2+ - IOCTL - GET DEVICE INFORMATION
+BX = file or device handle</annotation>
+      <annotation addr="207F:2292">EGA: graph 1 and 2 addr reg:
+set/reset.
+Data bits 0-3 select planes for write mode 00</annotation>
+      <annotation addr="207F:2288">EGA: graph 1 and 2 addr reg:
+set/reset.
+Data bits 0-3 select planes for write mode 00</annotation>
+      <annotation addr="207F:2278">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:2003">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1FF5">IDA comment: Align 2</annotation>
+      <annotation addr="207F:1FFF">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1E8B">EGA: graph 1 and 2 addr reg:
+mode register.Data bits:
+0-1: Write mode 0-2
+2: test condition
+3: read mode: 1=color compare, 0=direct
+4: 1=use odd/even RAM addressing
+5: 1=use CGA mid-res map (2-bits/pixel)</annotation>
+      <annotation addr="207F:1E8F">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1E93">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1EA0">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1EA9">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1EB2">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1EBB">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1ECB">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1924">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:1928">EGA: graph 1 and 2 addr reg:
+bit mask
+Bits 0-7 select bits to be masked in all planes</annotation>
+      <annotation addr="207F:0B68">Video status bits:
+0: retrace.  1=display is in vert or horiz retrace.
+1: 1=light pen is triggered; 0=armed
+2: 1=light pen switch is open; 0=closed
+3: 1=vertical sync pulse is occurring.</annotation>
+      <annotation addr="207F:0B63">Video status bits:
+0: retrace.  1=display is in vert or horiz retrace.
+1: 1=light pen is triggered; 0=armed
+2: 1=light pen switch is open; 0=closed
+3: 1=vertical sync pulse is occurring.</annotation>
+      <annotation addr="207F:0B5C">Video status bits:
+0: retrace.  1=display is in vert or horiz retrace.
+1: 1=light pen is triggered; 0=armed
+2: 1=light pen switch is open; 0=closed
+3: 1=vertical sync pulse is occurring.</annotation>
+      <annotation addr="207F:0B57">Video status bits:
+0: retrace.  1=display is in vert or horiz retrace.
+1: 1=light pen is triggered; 0=armed
+2: 1=light pen switch is open; 0=closed
+3: 1=vertical sync pulse is occurring.</annotation>
+      <annotation addr="207F:0B35">Video status bits:
+0: retrace.  1=display is in vert or horiz retrace.
+1: 1=light pen is triggered; 0=armed
+2: 1=light pen switch is open; 0=closed
+3: 1=vertical sync pulse is occurring.</annotation>
+      <annotation addr="207F:0B1E">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0B14">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0B0B">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0B02">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0AF9">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0AF1">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0AE8">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0ADF">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0AD6">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0AB4">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0AB8">EGA: graph 1 and 2 addr reg:
+enable set/reset</annotation>
+      <annotation addr="207F:0AB0">EGA: graph 1 and 2 addr reg:
+mode register.Data bits:
+0-1: Write mode 0-2
+2: test condition
+3: read mode: 1=color compare, 0=direct
+4: 1=use odd/even RAM addressing
+5: 1=use CGA mid-res map (2-bits/pixel)</annotation>
+      <annotation addr="207F:07E2">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:07DE">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:063D">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:064C">EGA: graph 1 and 2 addr reg:
+set/reset.
+Data bits 0-3 select planes for write mode 00</annotation>
+      <annotation addr="207F:056B">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:051F">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0525">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:04FB">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:04F5">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:04D1">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:04CB">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:0490">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:046C">EGA: sequencer address reg
+unknown register</annotation>
+      <annotation addr="207F:048A">EGA: graph 1 and 2 addr reg:
+read map select.
+Data bits 0-2 select map # for read mode 00</annotation>
+      <annotation addr="207F:0468">EGA: graph 1 and 2 addr reg:
+mode register.Data bits:
+0-1: Write mode 0-2
+2: test condition
+3: read mode: 1=color compare, 0=direct
+4: 1=use odd/even RAM addressing
+5: 1=use CGA mid-res map (2-bits/pixel)</annotation>
+      <annotation addr="207F:0367">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0360">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0359">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0352">EGA: graph 1 and 2 addr reg:
+read map select.
+Data bits 0-2 select map # for read mode 00</annotation>
+      <annotation addr="207F:0329">EGA: graph 1 and 2 addr reg:
+bit mask
+Bits 0-7 select bits to be masked in all planes</annotation>
+      <annotation addr="207F:0325">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0301">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:030B">EGA: graph 1 and 2 addr reg:
+bit mask
+Bits 0-7 select bits to be masked in all planes</annotation>
+      <annotation addr="207F:02EA">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:02E3">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:02CC">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:02C5">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:02AE">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:02A7">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0290">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0288">EGA: graph 1 and 2 addr reg:
+unknown register</annotation>
+      <annotation addr="207F:0223">DOS - DIRECT CONSOLE I/O CHARACTER OUTPUT
+DL = character &lt;&gt; FFh
+Return: ZF set = no character
+ZF clear = character recieved, AL = character</annotation>
+      <annotation addr="207F:015C">DOS - SELECT DISK
+DL = new default drive number (0 = A, 1 = B, etc.)
+Return: AL = number of logical drives</annotation>
+      <annotation addr="207F:0092">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:008E">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:0072">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:0076">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:0060">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:005C">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:004A">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:0046">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="207F:002C">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:0230">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:022C">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:0228">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:01F8">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:01ED">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:0175">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:0171">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:016D">DMA controller, 8237A-5.
+channel 0 base address
+(also sets current address)</annotation>
+      <annotation addr="204B:00C7">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="204B:00CB">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="204B:00C2">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="204B:00BE">PC/XT PPI port B bits:
+0: Tmr 2 gate ---&#x10; OR 03H=spkr ON
+1: Tmr 2 data -+  AND 0fcH=spkr OFF
+3: 1=read high switches
+4: 0=enable RAM parity checking
+5: 0=enable I/O channel check
+6: 0=hold keyboard clock low
+7: 0=enable kbrd</annotation>
+      <annotation addr="204B:00B5">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:00B9">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:00AA">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:00A5">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:00A1">DOS - SET INTERRUPT VECTOR
+AL = interrupt number
+DS:DX = new vector to be used for specified interrupt</annotation>
+      <annotation addr="204B:008D">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:0089">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:0084">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:0080">DOS - SET INTERRUPT VECTOR
+AL = interrupt number
+DS:DX = new vector to be used for specified interrupt</annotation>
+      <annotation addr="204B:00AE">Timer 8253-5 (AT: 8254.2)</annotation>
+      <annotation addr="204B:0044">Interrupt controller, 8259A.</annotation>
+      <annotation addr="1CD3:0067">offset aChameleon ; "CHAMELEON</annotation>
+      <annotation addr="1CD3:0051">offset aWasp ; "WASP</annotation>
+      <annotation addr="1CD3:0027">offset aLocust ; "LOCUST</annotation>
+      <annotation addr="207F:0040">Port 42 = Programmable Interval Timer chip
+-Give it the lower value (AL)</annotation>
+      <annotation addr="207F:0042">Put high value in low</annotation>
+      <annotation addr="207F:0044">Port 42 = Programmable Interval Timer chip
+-Give it the high value  (AL)</annotation>
+      <annotation addr="207F:0048">Connect timer to speaker</annotation>
+      <registerValues />
+      <extractResources>false</extractResources>
+      <outputFilePolicy>Segment</outputFilePolicy>
+    </user>
+  </input>
+</project>

@@ -1,0 +1,23 @@
+# Local build trees and generated runtime packages.
+/build*/
+/out/
+/cmake-build-*/
+/x64/
+/.vs/
+/.vscode/
+/.idea/
+/.dotnet/
+/CMakeUserPresets.json
+/Testing/
+/*.log
+/*.user
+/*.suo
+*.VC.db
+*.VC.VC.opendb
+.DS_Store
+Thumbs.db
+
+# Original-game data is supplied privately by each user.
+/assets/original-game/*
+!/assets/original-game/.gitignore
+!/assets/original-game/README.md

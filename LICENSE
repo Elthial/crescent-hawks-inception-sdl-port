@@ -1,0 +1,37 @@
+# Source license and scope
+
+Project-authored code in `src/SDL`, `tests`, `tools`, build scripts
+and project-authored documentation is offered under the MIT License below, but
+only to the extent contributors own or are authorized to license that material.
+
+The MIT License does **not** apply to:
+
+- `src/Original`, which is reconstructed from a proprietary game executable;
+- annotations, assembly, metadata, recovered tables or related evidence;
+- original game text, artwork, audio, trademarks, executable code or assets;
+- third-party dependencies, which retain their own licenses.
+
+No rights in those excluded materials are granted by this file.
+
+## MIT License
+
+Copyright (c) 2026 Elthial and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the project-authored software and associated documentation files covered by
+the scope above (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

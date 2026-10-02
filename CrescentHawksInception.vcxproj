@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{7C65E83A-78EE-47C3-93DE-29D0434BA7CE}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+    <RootNamespace>CrescentHawksInception</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeBuildCommandLine>powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Build.ps1&quot; -Configuration Debug -Target CrescentHawksInception</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Build.ps1&quot; -Configuration Debug -Target CrescentHawksInception</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)build\CrescentHawksInception.exe</NMakeOutput>
+    <LocalDebuggerCommand>$(NMakeOutput)</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>CHI_ASSET_DIRECTORY=$(ProjectDir)assets\original-game</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeBuildCommandLine>powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Build.ps1&quot; -Configuration Release -Target CrescentHawksInception</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Build.ps1&quot; -Configuration Release -Target CrescentHawksInception</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)build-release\CrescentHawksInception.exe</NMakeOutput>
+    <LocalDebuggerCommand>$(NMakeOutput)</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>CHI_ASSET_DIRECTORY=$(ProjectDir)assets\original-game</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NMakeIncludeSearchPath>$(ProjectDir)src\Original;$(ProjectDir)src\SDL;$(ProjectDir)build\_deps\sdl3-src\include;$(ProjectDir)build-release\_deps\sdl3-src\include;$(ProjectDir)build\_deps\sdl3-build\include-revision;$(ProjectDir)build-release\_deps\sdl3-build\include-revision</NMakeIncludeSearchPath>
+    <NMakePreprocessorDefinitions>CHI_SDL_PLATFORM=1;CHI_SDL_SOUND_TIMING=1</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemGroup>    <ClCompile Include="src\Original\BTECH_0800_ANIMATE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_COMBAT_DRAW.c" />
+    <ClCompile Include="src\Original\BTECH_0800_COMBAT_POSITION.c" />
+    <ClCompile Include="src\Original\BTECH_0800_DICE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_DISK.c" />
+    <ClCompile Include="src\Original\BTECH_0800_DRAW.c" />
+    <ClCompile Include="src\Original\BTECH_0800_EFFECTS.c" />
+    <ClCompile Include="src\Original\BTECH_0800_INPUT.c" />
+    <ClCompile Include="src\Original\BTECH_0800_INSPECT.c" />
+    <ClCompile Include="src\Original\BTECH_0800_INTERACTIONS.c" />
+    <ClCompile Include="src\Original\BTECH_0800_LOAD.c" />
+    <ClCompile Include="src\Original\BTECH_0800_MAIN.c" />
+    <ClCompile Include="src\Original\BTECH_0800_MAPFILES.c" />
+    <ClCompile Include="src\Original\BTECH_0800_MOVEMENT.c" />
+    <ClCompile Include="src\Original\BTECH_0800_MUSIC.c" />
+    <ClCompile Include="src\Original\BTECH_0800_NEW_GAME.c" />
+    <ClCompile Include="src\Original\BTECH_0800_NPCS.c" />
+    <ClCompile Include="src\Original\BTECH_0800_OVERHEAD.c" />
+    <ClCompile Include="src\Original\BTECH_0800_OVERVIEW_DRAW.c" />
+    <ClCompile Include="src\Original\BTECH_0800_PAUSE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_PILOT_MENU.c" />
+    <ClCompile Include="src\Original\BTECH_0800_POSITION.c" />
+    <ClCompile Include="src\Original\BTECH_0800_SAVE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_SCENE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_SETTINGS.c" />
+    <ClCompile Include="src\Original\BTECH_0800_SIDEBAR.c" />
+    <ClCompile Include="src\Original\BTECH_0800_SOUND_GATE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_START.c" />
+    <ClCompile Include="src\Original\BTECH_0800_TEXT.c" />
+    <ClCompile Include="src\Original\BTECH_0800_TILESET.c" />
+    <ClCompile Include="src\Original\BTECH_0800_TITLE.c" />
+    <ClCompile Include="src\Original\BTECH_0800_WALK.c" />
+    <ClCompile Include="src\Original\BTECH_0800.c" />
+    <ClCompile Include="src\Original\BTECH_0D27.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_COMPONENT_SALVAGE.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_DESCRIPTION.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_ENCOUNTER.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_GAUGE.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_LOOT.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_PIPS.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_SALVAGE.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_SCAN_BROWSER.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_STATS_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB_STATS.c" />
+    <ClCompile Include="src\Original\BTECH_0DAB.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_ARENA.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_BLD.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_ENTRY.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_EQUIPMENT.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_INTERPRETER.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_MISSION_VIEW.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_MISSION.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_OCCUPANTS.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_SPAWN.c" />
+    <ClCompile Include="src\Original\BTECH_0FDC_STOCK_TEXT.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_AMMO.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_ARENA_PATCH.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_FAILED_START.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_JAILBREAK.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_RECRUIT.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_REX.c" />
+    <ClCompile Include="src\Original\BTECH_11B8_UPGRADES.c" />
+    <ClCompile Include="src\Original\BTECH_11B8.c" />
+    <ClCompile Include="src\Original\BTECH_135D_CACHE.c" />
+    <ClCompile Include="src\Original\BTECH_135D_DOORS.c" />
+    <ClCompile Include="src\Original\BTECH_135D_MAPROOM.c" />
+    <ClCompile Include="src\Original\BTECH_135D_OVERVIEW.c" />
+    <ClCompile Include="src\Original\BTECH_135D_STAR_PUZZLE.c" />
+    <ClCompile Include="src\Original\BTECH_135D_TERMINALS.c" />
+    <ClCompile Include="src\Original\BTECH_1431.c" />
+    <ClCompile Include="src\Original\BTECH_1467_ASSIGN.c" />
+    <ClCompile Include="src\Original\BTECH_1467_CLEAR_PLAN.c" />
+    <ClCompile Include="src\Original\BTECH_1467_SELECT.c" />
+    <ClCompile Include="src\Original\BTECH_1543_DECIMAL.c" />
+    <ClCompile Include="src\Original\BTECH_1543_EJECT.c" />
+    <ClCompile Include="src\Original\BTECH_1543_MAP_PATCH.c" />
+    <ClCompile Include="src\Original\BTECH_1543_TARGET.c" />
+    <ClCompile Include="src\Original\BTECH_1543_WEAPON_MENU.c" />
+    <ClCompile Include="src\Original\BTECH_1631_AI.c" />
+    <ClCompile Include="src\Original\BTECH_1631_CASH.c" />
+    <ClCompile Include="src\Original\BTECH_1631_CRITICAL.c" />
+    <ClCompile Include="src\Original\BTECH_1631_EFFECT_DRAW.c" />
+    <ClCompile Include="src\Original\BTECH_1631_EFFECT_POSITION.c" />
+    <ClCompile Include="src\Original\BTECH_1631_HEALTH.c" />
+    <ClCompile Include="src\Original\BTECH_1631_HEAT.c" />
+    <ClCompile Include="src\Original\BTECH_1631_HIT_TEXT.c" />
+    <ClCompile Include="src\Original\BTECH_1631_OCCUPANCY.c" />
+    <ClCompile Include="src\Original\BTECH_1631_PATH.c" />
+    <ClCompile Include="src\Original\BTECH_1631_RANGE.c" />
+    <ClCompile Include="src\Original\BTECH_1631_REFRESH.c" />
+    <ClCompile Include="src\Original\BTECH_1631_STEP.c" />
+    <ClCompile Include="src\Original\BTECH_1631_TRANSFER.c" />
+    <ClCompile Include="src\Original\BTECH_1631_WEAPON.c" />
+    <ClCompile Include="src\Original\BTECH_183B_COMPUTER_GROUP.c" />
+    <ClCompile Include="src\Original\BTECH_183B_CONTROLLER.c" />
+    <ClCompile Include="src\Original\BTECH_183B_ENCOUNTER.c" />
+    <ClCompile Include="src\Original\BTECH_183B_KICK.c" />
+    <ClCompile Include="src\Original\BTECH_183B_MECH_MOVEMENT.c" />
+    <ClCompile Include="src\Original\BTECH_183B_MENU.c" />
+    <ClCompile Include="src\Original\BTECH_183B_PLAN_UI.c" />
+    <ClCompile Include="src\Original\BTECH_183B_PLAN.c" />
+    <ClCompile Include="src\Original\BTECH_183B_PREVIEW.c" />
+    <ClCompile Include="src\Original\BTECH_183B_REGISTER_EFFECT.c" />
+    <ClCompile Include="src\Original\BTECH_183B_SCAN.c" />
+    <ClCompile Include="src\Original\BTECH_183B_SETTINGS.c" />
+    <ClCompile Include="src\Original\BTECH_183B.c" />
+    <ClCompile Include="src\Original\BTECH_1AE8_ANIMATION_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_1AE8_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_1AE8_EFFECTS.c" />
+    <ClCompile Include="src\Original\BTECH_1AE8_FIRE.c" />
+    <ClCompile Include="src\Original\BTECH_1AE8_MECHANICS.c" />
+    <ClCompile Include="src\Original\BTECH_1CD3_DIALOGS.c" />
+    <ClCompile Include="src\Original\BTECH_1CD3_MESSAGE.c" />
+    <ClCompile Include="src\Original\BTECH_1CD3_TEXT.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_BORDER.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_CAPTURE.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_CLEAR.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_DIALOGUE.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_LAYOUT.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_MENU.c" />
+    <ClCompile Include="src\Original\BTECH_1E56_TEXTBOX.c" />
+    <ClCompile Include="src\Original\BTECH_1E56.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_ALLOCATE.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_DECODE.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_FILES.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_FONT.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_IMAGE.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_INPUT.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_LINES.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_PALETTE.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D_SPRITE_CAPTURE.c" />
+    <ClCompile Include="src\Original\BTECH_1F3D.c" />
+    <ClCompile Include="src\Original\BTECH_1FC5_DISPATCH.c" />
+    <ClCompile Include="src\Original\BTECH_1FC5_NOISE.c" />
+    <ClCompile Include="src\Original\BTECH_1FC5_PLATFORM.c" />
+    <ClCompile Include="src\Original\BTECH_1FC5_REPETITIONS.c" />
+    <ClCompile Include="src\Original\BTECH_1FC5_SWEEPS.c" />
+    <ClCompile Include="src\Original\BTECH_1FC5_TONES.c" />
+    <ClCompile Include="src\Original\BTECH_204B.c" />
+    <ClCompile Include="src\Original\BTECH_207F_ABS.c" />
+    <ClCompile Include="src\Original\BTECH_207F_ADJACENCY.c" />
+    <ClCompile Include="src\Original\BTECH_207F_ALLOCATE.c" />
+    <ClCompile Include="src\Original\BTECH_207F_ANM_DECODE.c" />
+    <ClCompile Include="src\Original\BTECH_207F_COMBAT_CACHE.c" />
+    <ClCompile Include="src\Original\BTECH_207F_CONSTRUCTION.c" />
+    <ClCompile Include="src\Original\BTECH_207F_DECODE.c" />
+    <ClCompile Include="src\Original\BTECH_207F_DIRECTION.c" />
+    <ClCompile Include="src\Original\BTECH_207F_FRAMEBUFFER.c" />
+    <ClCompile Include="src\Original\BTECH_207F_HIGHLIGHT.c" />
+    <ClCompile Include="src\Original\BTECH_207F_MAP_RENDER.c" />
+    <ClCompile Include="src\Original\BTECH_207F_MAPCACHE.c" />
+    <ClCompile Include="src\Original\BTECH_207F_NUMBERS.c" />
+    <ClCompile Include="src\Original\BTECH_207F_OVERVIEW.c" />
+    <ClCompile Include="src\Original\BTECH_207F_PIXELS.c" />
+    <ClCompile Include="src\Original\BTECH_207F_PLANAR.c" />
+    <ClCompile Include="src\Original\BTECH_207F_RANDOM.c" />
+    <ClCompile Include="src\Original\BTECH_207F_ROW_COPY.c" />
+    <ClCompile Include="src\Original\BTECH_207F_SCROLL.c" />
+    <ClCompile Include="src\Original\BTECH_207F_TEXT.c" />
+    <ClCompile Include="src\Original\BTECH_207F_TILE.c" />
+    <ClCompile Include="src\Original\BTECH_207F.c" />
+    <ClCompile Include="src\Original\BTECH_ANIMATION_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_COMBAT_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_COMBAT_PROJECTION_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_FONT_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_MAP_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_MECHREFS.c" />
+    <ClCompile Include="src\Original\BTECH_MENU_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_SCENE_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_SOUND_DATA.c" />
+    <ClCompile Include="src\Original\BTECH_WEAPONS.c" />
+    <ClCompile Include="src\Original\BTECH_WORLD_DATA.c" />
+    <ClCompile Include="src\Original\DOS_CONSOLE.c" />
+    <ClCompile Include="src\Original\DOS_IO.c" />
+    <ClInclude Include="src\Original\dos.h" />
+    <ClInclude Include="src\Original\game.h" />
+    <ClInclude Include="src\Original\mech.h" />
+    <ClInclude Include="src\Original\music.h" />
+    <ClInclude Include="src\SDL\backend.h" />
+    <ClCompile Include="src\SDL\ega.c" />
+    <ClCompile Include="src\SDL\io.c" />
+    <ClCompile Include="src\SDL\main.c" />
+    <ClCompile Include="src\SDL\memory.c" />
+    <ClCompile Include="src\SDL\music_timer.c" />
+    <ClCompile Include="src\SDL\video_audio.c" />
+    <None Include="Build.ps1" />
+    <None Include="CMakeLists.txt" />
+    <None Include="README.md" />
+    <None Include="Run.ps1" />
+    <None Include="Run-Inception.ps1" />
+    <None Include="config\CrescentHawksInception.ini" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

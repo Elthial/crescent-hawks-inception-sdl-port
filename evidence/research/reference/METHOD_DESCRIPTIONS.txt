@@ -1,0 +1,313 @@
+# Sol: name|plain-language summary|rough implementation outline. Source of the inline comments and inventory.
+Draw_Terrain_Clipped_Sprite_0800|Draw a sprite with terrain hiding its lower rows.|Temporarily shorten the sprite header, draw the visible part, then restore the header.
+Main_Game_Loop|Run normal exploration and respond to the player's actions.|Poll input, dispatch movement or menus, update the world, and redraw until the game exits.
+Draw_Infantry_And_Mechs|Draw the visible people and mechs on the world map.|Walk the position and active tables, select animation sprites, and clip them against terrain.
+Draw_Menu_MultiSelect_0E4B|Draw combatants and persistent effects in the combat view.|Clear visibility flags, project infantry and mech positions, and draw their selected sprites; the legacy menu name is misleading.
+Advance_Combatant_Animation_Stream_1732|Get a combatant's next sprite frame.|Read its animation cursor, handle stream control bytes, and return the next frame ID.
+Move_Map_View_To_Packed_Position_17BB|Move the map view to a world position.|Compare unsigned packed coordinates, then stream one step at a time in Y before X.
+Move_Map_View_By_Signed_Delta_1817|Shift the map view by signed horizontal and vertical amounts.|Update packed coordinates and move or rebuild the cached map as necessary.
+Combat_Move_Position|Move the combat view to a selected position.|Step Y then X toward the unsigned target, normalising packed boundaries without map streaming.
+Offset_Packed_Position|Adjust the current world position.|Consume signed Y then X deltas and normalise packed boundaries without changing the map cache.
+Play_Sound_If_Enabled|Play a sound effect when sound is enabled.|Check the sound setting, then dispatch the supplied sound ID.
+Roll2D6|Roll two six-sided dice.|Roll the first die, retain its result, roll the second die, and return their native WORD sum.
+RollD6|Roll one six-sided die.|Mask the original RNG with the three-bit candidate mask, reject excess candidates, and convert to a die face.
+Prompt_Yes_No|Ask a yes-or-no question.|Read and normalise keyboard input, accepting the specified default where the native routine permits it.
+Decode_Draw_Next_ANM_Frame|Decode and display the next animation frame.|Read frame commands, update image data, draw the frame, and wait for its recorded delay.
+Map_Interactables_Building_Or_Items|Handle buildings and objects at an on-foot position.|Project the packed position into map coordinates, inspect nearby tiles, and dispatch the matching interaction.
+Character_Movement_On_Map|Try to move Jason or his mech during exploration.|Decode the movement command, check terrain and interactions, and update the position if allowed.
+Update_Friendly_Movement_Animations_231D|Choose friendly movement animation streams.|Use the movement command and each friendly actor's state to select direction and sprite-family data.
+Update_Animated_Map_Tiles_240B|Advance the map's repeating tile animations.|Cycle three alternative tile frames and copy the selected graphics into the active tile slots.
+Update_Roaming_Map_Npcs_24C2|Update roaming people and mechs outside turn-based combat.|Walk NPC records, apply movement and state conditions, and refresh their display positions.
+Display_Text_At_2867|Print text at a specified screen location.|Set the text position and colours, then call the shared text renderer.
+Set_Text_Colour_Bright_Green_28A2|Select bright-green text.|Set the shared foreground colour used by subsequent text drawing.
+Select_Game_Disk_And_Drive_28CC|Select the original game's asset disk and drive.|Check installation flags and change or request the source drive for the requested disk.
+Request_Game_Disk_2913|Ask for the required original game disk.|Display the disk prompt and process the player's response using the native drive layout.
+Get_CBill_Allowance_Wealth_Limit|Read the wealth limit for allowance payments.|Zero-extend the little-endian allowance WORD at D33F:D340 into a DWORD return.
+Drain_Pending_Keyboard_Input_2A2B|Discard queued keystrokes.|Keep reading pending input until the keyboard queue is empty.
+Prompt_And_Wait_For_Key_2A4F|Show the continue prompt and wait for a key.|Display the fixed prompt and call the blocking input bridge.
+Display_Plural_Suffix_2A69|Print the plural suffix.|Send the fixed suffix string to the text renderer.
+Display_Sentence_Period_2A7E|Print a sentence-ending period.|Send the fixed punctuation string to the text renderer.
+Draw_Persistent_Map_Effects_2A93|Draw persistent debris, fire and similar map effects.|Scan effect slots, decode their packed positions, and draw their selected sprites.
+Game_Pause_Menu|Handle the exploration pause menu.|Display choices and dispatch save, load, settings, inspection or return actions.
+DOS_Load_Map_Files|Load a map region's original files.|Select the asset source, read the region data, and initialise map descriptors and NPC state.
+Load_And_Draw_ANIMATE_ICN|Load the alternate animated map tiles.|Read the ICN graphics and copy its three tile-animation frames into their working storage.
+Load_Game|Read a saved game and reconstruct the active world.|Prompt for a save, restore persistent records, rebuild display tables, and reload the required map.
+Save_Game|Write the current persistent game state.|Prompt for the destination and write the native save fields and records in their original layout.
+Inspect_Characters|Let the player inspect party members.|Select a character and display equipment, skills, health and associated mech information.
+Menu_Change_Game_Settings|Change exploration settings.|Present the settings menu and update the selected sound, speed or display options.
+Show_Overhead_Map|Display and control the overhead map.|Save the current view, draw the reduced map and markers, process input, then restore exploration.
+Overhead_Map_Draw_3FAE|Draw overhead-map terrain and party markers.|Read cached map data, render reduced tiles, and overlay friendly position indicators.
+Build_Dynamic_Overhead_Tile_45C2|Prepare a dynamically generated overhead tile.|Reduce the selected map pattern and pack its pixels into the overhead graphics slot.
+Load_And_Draw_BTTLTECH_ICN|Load the main map tileset.|Read the original ICN file and transfer its tile graphics into the game's working graphics memory.
+Load_And_Draw_BTTITLE_CMP|Display the title picture.|Load and decompress the original CMP image, apply the palette, and draw it.
+Load_And_Play_Intro_Music_476D|Play the introductory music from the original sound file.|Load the SIF stream, start the selected sound backend, and handle completion or interruption.
+Display_Animation_Scene|Play a selected original animation scene.|Load its ANM data, decode successive frames, process timing and input, then restore the requested view.
+Draw_Character_BDC_Sidebar_Row|Draw a character's Body, Dexterity and Charisma row.|Read the character's attributes and draw the corresponding labelled bars.
+Draw_BDC_Attribute_Bar|Draw one character attribute bar.|Convert the signed attribute value into filled and unfilled display segments.
+Draw_Health_and_C_Bills_Sidebar|Refresh party health and money indicators.|Optionally redraw the panel background, then print balances and character health rows.
+Menu_Assign_Pilots|Open the pilot-assignment interface.|Check whether assignment is available and call the shared pilot-and-rider selector.
+Load_Game_Map_Data|Reset the game and build Jason's initial Citadel view.|Load surrounding regions, initialise caches and actors, then draw the starting view.
+Start_Game|Start a new game or enter the title-screen workflow.|Handle title choices and attract mode, initialise or load state, and enter exploration.
+Startup_Print_Nul_String_000A|Print a startup message.|Read a FAR string byte by byte until NUL and pass each character to the platform output binding.
+Capture_Startup_Sprite_Table_0410|Build the game's 376 sprite snapshots.|Capture fixed rectangles from the mech artwork and store each allocated sprite in the pointer table.
+Setup_Game|Initialise assets and enter the game.|Choose the asset layout, initialise EGA, load title and tiles, capture sprites, and call Start_Game.
+Salvage_Armour_Dialog|Recover usable material from defeated mechs.|Select wrecks and available technicians, calculate recovery, and transfer eligible armour or components.
+Salvage_Mechs_Dialog|Try to recover a whole defeated mech.|Select a wreck and technician, check recovery conditions and party capacity, then copy the mech record.
+Loot_Enemy_Soldiers_Dialog|Collect equipment from defeated personnel.|Inspect casualty flags, award cash, and distribute eligible weapons through Rex or Jason's exchange prompt.
+Return_Bool_Allow_Computer_Control_Dialog|Ask whether the computer should control combat actions.|Display the question and return the player's yes-or-no response.
+Calibrate_CPU_And_Video_Timing_0B95|Measure the native machine's drawing and delay speed.|Count work around display timing events and store values used by later waits and effects.
+Initialize_Graphics_Runtime_0C8F|Set up the original display and timing services.|Configure the selected graphics mode and runtime flags, install required handlers, and calibrate timing.
+Restore_BIOS_Text_Mode_0D12|Restore text mode when the game finishes.|Ask the BIOS for the native text mode; the port will instead release its presentation resources.
+DOS_Critical_Error_Handler_0D26|Handle an original DOS critical-error callback.|Return the native error disposition; replace this with host file-error handling rather than emulating DOS.
+Generate_Random_Encounter_Enemies|Create enemies for a random encounter.|Choose encounter composition, initialise mech and infantry records, and find usable spawn positions.
+Combat_Browse_Scan_Targets_1467|Browse combatants in the scan interface.|Cycle through eligible actors, optionally open detailed mech statistics, then restore the scan menu state.
+Draw_Vertical_Mech_Status_Gauge_174C|Draw a vertical mech-condition gauge.|Paint the supplied healthy and damaged portions at the requested screen coordinates.
+Draw_Component_Status_Pips_1858|Draw component condition as small marks.|Draw the requested total pips and distinguish healthy components from damaged ones.
+Display_Friendly_Combatant_Description_18E8|Describe a friendly combatant.|Resolve mech or infantry identity and print the permitted name, equipment and recognition details.
+Examine_Screen_BTSTATS_CMP|Show a mech's detailed status screen.|Load the status artwork, draw crew and components, wait for input or timeout, then restore the default palette.
+Interact_with_BLD|Enter a building's scripted interaction.|Resolve the building script, load it and any entry animation, execute it, then restore the game display.
+Execute_Bld_Bytecode_01C0|Run a building dialogue script.|Walk BLD bytes and dispatch text, menus, state tests, branches and native action calls.
+Read_Bld_Target_05F7|Read a BLD branch destination.|Combine two unsigned bytes into the native little-endian WORD target.
+Mech_Mission_0629|Run a training or jailbreak mission.|Set up the objective, process movement and world updates, resolve completion, then record the outcome and clean up.
+Mission_GenerateEnemies|Create enemies requested by a mission.|Reset encounter state, choose templates and equipment, and populate enemy records and positions.
+Restore_Mission_Map_View_After_Combat|Return to the mission map after combat.|Restore the mission's world position and map caches, then rebuild the exploration display.
+Distribute_Purchased_Armour|Assign purchased armour to party members.|Select eligible recipients, update their armour records, and repeat or finish according to the menu response.
+Distribute_Weapon_To_Party|Give a purchased or recovered weapon to a party member.|Select a recipient, handle existing equipment, and update the character's weapon slot.
+Talk_To_Building_Occupants|Dispatch conversations with a building's occupants.|Inspect the current building and story state, then display or invoke the appropriate conversation.
+Display_No_Stock_Transaction_Text|Print the no-transaction response.|Display the fixed stock-dialogue string through the shared text renderer.
+Read_Bld_Immediate_Word_19F6|Read a WORD operand from a building script.|Combine its low and high bytes without sign-extending either byte.
+Prepare_Party_Mech_For_Arena|Stage a party mech for arena combat.|Save crew IDs and slot zero, stage the selected mech, hide companions and select owned-mech cleanup.
+Restore_Party_After_Arena_Combat|Restore the party after an arena match.|Return owned-mech damage or discard the rental, restore saved records and crew, then dismount the party.
+Prepare_Rental_Locust_For_Arena|Prepare the arena's rental Locust.|Back up slot zero, copy the Locust template, hide companions and select rental cleanup.
+Load_And_Decode_Indexed_BLD_1D30|Load and decode a selected building script.|Resolve the filename table entry, read the original BLD, and decode it into the shared script buffer.
+Mechlube_Repair_Mech|Buy repairs for a party mech.|Inspect damage by component category, calculate charges, obtain confirmation, and apply affordable repairs.
+Mechlube_Modify_Mech|Select a mech modification package and quote its price.|Check upgrade state, choose the chassis/stage package, and store the package ID and price for the purchase routine.
+Mechlube_Upgrade_Mech|Buy a mech upgrade package.|Select the supported package, check funds and prerequisites, and modify the mech's statistics and equipment.
+Recruit_Crescent_Hawk_Agent|Recruit an agent with the requested specialty.|Check recruitment and party conditions, initialise the character, and update story flags and dialogue.
+Recruit_Rex_And_Start_KuritaParty_Ambush|Recruit Rex and trigger the associated ambush.|Stage the recruit and enemy party, update story state, and enter the scripted combat workflow.
+Arena_Select_And_Apply_Combat_Map_Patch_137F|Prepare the arena's combat terrain patch.|Roll one of four variants, remember the selector, and write the selected terrain pattern without a backup.
+Arena_Remove_And_Randomize_Combat_Map_Patch_1441|Remove the arena terrain patch.|Read the remembered variant, replace its endpoints, and randomise its interior tiles; no cache refresh occurs here.
+Run_Jailbreak_Mission_And_Award_Stinger_152F|Run the prison escape and award its resulting mech.|Stage the escape, run the jailbreak mission, and install the successful Stinger and party state.
+Play_Failed_Mech_Startup_Scene_16B2|Show a failed attempt to start a jailbreak mech.|Load O0, clear frame workspace, draw the startup prefix, play its failure sound, then restore layout and sidebar.
+Mechlube_Buy_Ammo|Purchase ammunition for a mech.|Find eligible ammo components, calculate quantities and cost, then update the paid-for ammo state.
+Draw_STARLEAG_ICN_AND_Game_Logic|Prepare the Star League cache's special map and state.|Load the special artwork and initialise cache-related tiles, positions and story conditions.
+StarLeague_Secret_Passageway_Discovered|Reveal the cache's secret passage.|Replace a six-by-three tile pattern, redraw the world, show the discovery message and mark the message box open.
+StarLeague_Cache_PhoenixHawk|Handle the cache's Phoenix Hawk discovery.|Invoke ENDMECH only while the found flag is zero; the script owns any discovery-state change.
+Display_StarLeague_Cache_Dialog_Window|Open the cache dialogue panel.|Select the appropriate menu layout and display the cache text.
+StarLeague_HyperPulse_Power_Dialog_Window|Handle interaction with the cache power controls.|Check the player's location and current power state, then show or apply the scripted response.
+OverHead_Map_Function|Swap buffers for the special overhead view.|Swap 250 colour bytes with the cache or map-room overview selected by the room-loaded flag; the caller presents it.
+StarLeague_Security_Terminal|Use a cache security terminal.|Find the terminal by coordinates, check its state, and apply the one-use colour-code operation.
+HPGTransmitter|Handle the hyperpulse transmitter.|Check location and prerequisite flags, then display the result or update the transmitter state.
+StarLeague_Map_Room|Enter and operate the cache's map room.|Dispatch parts discovery or WHITE-hole dialogue, then stage the room artwork, saved tiles, descriptors and collision threshold.
+Draw_STARLEAG_ICN_Scene|Return from the map room to the cache scene.|Restore staged positions and display buffers, reload the scene, and resume the outside view.
+Map_Interactable_Play_Sound|Play the special-map interaction sound.|Check the supplied map position and dispatch the corresponding effect.
+Cache_StarMap_CorrectPassword|Process the star-map puzzle response.|Check seven required tiles and reject extra selected stars; latch WHITE on success or deselect stars on failure.
+StarLeague_Key_Codes|Use a door's colour code.|Locate the door, test and consume its stored code, and replay or update the door state.
+Heal_Characters|Apply medical recovery to the party.|Check recovery gating, select a medic, calculate health gains from equipment and skills, and update characters.
+Assign_Pilot_and_rider_to_Mechs|Assign party members as mech pilots and riders.|Build eligible mech and personnel menus, validate selections, and update both sides of the assignment.
+Copyright_Check_Mech_Quiz|Run the remnant mech-diagram copy-protection quiz.|Select component prompts and compare input; the supplied executable has this protection disabled.
+Display_Text_Mech_Names|Build the mech-selection name display.|Walk eligible friendly mech records and print their names and selection information.
+Combat_Clear_Movement_Plans_0D7E|Clear combat movement orders.|Reset the per-combatant movement-plan records to their native empty state.
+Combat_Weapon_UI_0004|Choose an attacker's weapons and attack options.|Collect critical-slot weapons, show ammo and range, handle shutdown/damaged equipment and override prompts, then record targets; range does not block selection.
+Combat_Select_Weapon_Target_UI|Choose a target for a selected weapon.|Cycle active enemy slots, display their identity and range, and store a target or FF on Cancel; an out-of-range target can still be selected.
+Combat_Mech_Eject_0A35|Retire a destroyed mech and eject friendly occupants.|Mark inactive/wreck, clear exact target references, preserve its name initial, handle arena companions/map patch and messages, then place pilot/rider on foot; seat IDs remain stored.
+Starport_MapPatch_SaveApply_Or_Restore_0C72|Apply or remove the Starport map patch.|Save affected bytes before installation or restore the previously saved bytes on exit.
+Prompt_For_Unsigned_Decimal_0CDE|Read an unsigned decimal value from the player.|Redraw up to seven digits, Backspace deletes and Escape resets without exiting; Enter parses a 32-bit value, including zero for empty input, and restores white text.
+Position_0006|Try a combat actor's movement step.|Test candidate directions, terrain and footprint restrictions, then occupancy before accepting a position.
+Display_Text_Human_Health|Describe a person's health.|Divide signed health by Body and select the matching condition text.
+Menu_Draw_MultiSelect|Refresh the combat planning display.|Redraw the world and status panels and optionally display the combat menu.
+Combat_Computer_Control|Plan one computer-controlled actor's combat orders.|Choose a target, evaluate approach paths and weapon ranges, assign movement and attacks, then restore the view anchor.
+Combat_Operation_0BB5|Measure distance between packed world positions.|Separate signed coordinate differences and return half the larger magnitude plus the smaller magnitude.
+Combat_Mech_HeatLevels|Update heat, targets and casualty display state.|Clear invalid targets, process all mech heat records, and retire dead personnel positions.
+Combat_Calculate_RangeBracket|Determine a weapon's range bracket.|Adjust for target footprint, calculate packed-world distance, and compare the weapon's range limits.
+Combat_Weapon_Display_Text_And_Menu_Options|Show a temporary combat weapon message.|Save the panel layout, display text and wait for input, then restore the previous layout.
+Combat_GetAmmoForSelectedWeapon_10A2|Find the raw component index for a weapon ordinal.|Walk weapon-bearing critical entries and return component-minus-one or 0xFF; the legacy ammo name is misleading.
+Combat_StructureHit_1122|Find where structural damage should transfer.|Map the supplied raw hit-location offset to the original neighbouring section or terminal result.
+Combat_Critical_Mech_Damage_11AB|Apply section destruction and critical hits to a mech.|Inspect section structure, select critical components, and dispatch weapon, ammo, actuator or system damage.
+MechId_Random_Count_15FA|Count intact critical entries.|Scan the supplied range and count nonzero entries without the destruction high bit.
+Combat_fn1631_163E|Mark one intact critical entry destroyed.|Reject empty ranges, choose a start from zero to three, scan cyclically for an intact entry, mark it and return success.
+Return_bool_fn1631_16AB|Check occupied destinations and possible crushing.|Compare actor footprints at the trial step, apply the native occupancy and crushing rules, and return acceptance.
+Combat_Check_Mech_Actuator_Status|Test a mech's requested actuator mask.|Read the actuator damage bytes and test the supplied component mask; individual anatomical bit labels remain uncertain.
+Combat_DisplayText_ArmourHitLocation|Print the name of an armour hit location.|Translate the raw armour location into the corresponding native text entry.
+Combat_Return_bool_fn1631_1BFE|Check turning and path clearance.|Build the proposed facing and movement footprint and test its intervening terrain and collision conditions.
+Combat_CombatMessageVerbosityFilter|Display a combat message if its verbosity is enabled.|Check the combat-message setting before sending the supplied string to the renderer.
+GameSpeed_RateControl|Apply the selected game-speed delay.|Translate the speed setting and timing calibration into the original wait behaviour.
+Combat_CompassPos_1DF8|Convert packed-world displacement to effect-screen coordinates.|Step each packed axis toward the other position, applying boundary corrections and updating the shared coordinates around screen anchor26,12.
+Combat_AudioVisual_1EA2|Select an effect-direction octant from signed deltas.|Compare signed delta magnitudes using native WORD negation and tie rules, then return octant zero to seven.
+Combat_AudioVisual_MechPositioning_And_GraphicsMemory_1F09|Prepare effect rendering at a mech position.|Read the supplied position data, update the view anchor, and rebuild the working graphics.
+Draw_Combat_Sprites_1F73|Draw a combat sprite at the requested position.|Resolve its sprite pointer and dispatch the retained EGA drawing path.
+Display_Text_CBill_Balance|Display the party's current cash.|Format the multiword C-bill balance and print it in the selected panel.
+Combat_Parent_000A|Coordinate a complete combat encounter.|Assess enemies, run planning and mechanics rounds, check betrayal and endings, then handle salvage and mode outcomes.
+Combat_Computer_Control_1482|Plan a group of computer-controlled combatants.|Walk the requested actor range and call the single-actor planning routine for eligible entries.
+Combat_UI_Menu_Logic|Handle the friendly turn-planning menu.|Read menu choices and dispatch movement, weapons, kicks, scanning or combat settings.
+Combat_MovementTarget_unknown_1774|Preview a selected actor and its movement.|Optionally recenter, draw the actor marker, and render friendly step glyphs into shared endpoint coordinates.
+Combat_Calculate_Movement|Build an actor's combat movement steps.|Follow destination orders, append signed steps, subtract terrain costs, and restore the saved facing.
+Combat_Select_Movement_Plan_For_Turn|Let the player build a combat movement plan.|Preview steps and facing, check clearance and budget, and commit or cancel the per-actor plan.
+Combat_Kick_Target|Choose a target for a friendly mech's kick.|Find eligible nearby targets, display choices, and store the selected melee order.
+Combat_Mech_Movement|Set a mech's movement budget and mode.|Apply chassis speed, actuator losses, heat penalty, run/jump rules and shutdown to the shared movement budget.
+Combat_Infantry_Movement|Set personnel movement capacity.|Use the character's statistics and condition to initialise the infantry movement budget.
+SettingsMenu_CombatMessages|Choose combat-message verbosity.|Display the setting choices and return the selected WORD; the parent stores it.
+SettingsMenu_SeeCombatGraphics_bool|Choose whether combat effects are shown.|Display the graphics prompt and return its WORD result; the parent stores it.
+Scan_Enemies|Open the combat scan menu.|Browse visible eligible opponents and show the selected actor's status information.
+Check_If_CriticalSlot_Destroyed|Read the structure supporting a critical slot.|Map raw component thresholds to a structure byte, or return1 for the special C8 package.
+Register_Persistent_Map_Effect_27C9|Store a persistent map effect.|Overwrite the next ring slot, pack the sprite and coordinates, and advance the slot counter.
+Combat_Load_9Grid_Map_2835|Load the map regions needed for combat.|Determine the encounter's surrounding regions and populate the nine-grid map cache.
+Combat_Assess_FirstEnemy_Reachability_28DB|Assess reachability of the first enemy.|Probe the relevant actor and terrain relationships and return the encounter assessment flag.
+Combat_Character_Pos_Grid|Restore the exploration map position after combat.|Set the packed world anchor and rebuild the map regions and display state around it.
+Combat_Mechanics|Resolve a combat round's movement and attacks.|Execute movement plans, resolve personnel and mech attacks, apply damage and criticals, and update deaths and wrecks.
+Combat_AudioVisual_Effects|Show and play an attack's effects.|Play attack streams, sound and traveling effects, then remove casualties, place wrecks or spawn arena reinforcements.
+Combat_Random_CreateFire|Possibly start a fire after a missed attack.|For2D6 outside5..9, offset the actor's packed position, apply boundary masks and register fire sprite7C.
+Citadel_Building_Dialogs|Perform native actions requested by building scripts.|Convert the raw action to a zero-based case and dispatch purchases, training, recruitment, services or story changes.
+Draw_Message_Box|Open the shared dialogue message box.|Select the standard panel layout and draw its border and background.
+Display_Text_From_Memory_ScreenRetrace_KeyboardInput|Display text and perform the standard presentation wait.|Print the supplied string and call the timed input-check wrapper; callers perform any separate blocking key read.
+Display_Text_Shop_Cannot_Afford_Text|Print the shop's insufficient-funds response.|Display the fixed affordability message through the common text path.
+Display_Text_4FA0_Value|Print the shared line-break string.|Pass the fixed text at the native string location to the renderer.
+Border_Descriptor_Word|Read one border-description WORD.|Use WORD-indexed byte addressing in the supplied FAR descriptor without normalising its segment.
+Border_Tile_Address|Find a border tile's graphics.|Add tile ID times 32 to the border graphics base with native WORD offset wrap.
+Draw_Menu_Border|Draw the selected panel's border.|Read its descriptor, draw four corners, and chain four repeated edge patterns.
+DrawCall_Border|Draw one repeated border edge.|Repeat tiles to the requested length, scan the pattern terminator, and return the next pattern start.
+Menu_Layout_Read_Word|Read a field from a menu layout.|Calculate the 16-byte record stride and read the requested WORD field.
+Menu_Layout_Write_Word|Update a field in a menu layout.|Calculate the 16-byte record stride and write the supplied WORD value.
+Menu_Memory_Variables|Activate a menu layout.|Read the layout record into shared origin, dimensions, colours and text-position state.
+Draw_Top_Graphic_Sidebar|Clear the active panel's interior and reset its text cursor.|Fill the shared interior rectangle with its background colour, then zero both cursor offsets; border tiles are drawn separately.
+Menu_Text_Read_Byte|Read a text byte with native pointer wrapping.|Add the index to the FAR pointer's WORD offset while leaving the segment unchanged.
+Display_Text_From_Memory|Print text inside the active panel.|Read characters and controls, wrap words, update the cursor, and scroll the panel when needed.
+Display_Text_In_TextBox|Draw one text fragment and advance its row if requested.|Render the supplied text at the shared cursor and apply the original line or scroll behaviour.
+TileSet_Memory_Operation|Capture tile graphics into a buffer.|Pass the supplied source geometry and destination to the planar graphics capture helper.
+Create_TileSet_Array|Build a captured tileset buffer.|Always allocate count-times-32 bytes with native size wrapping, capture successive tiles with row and FAR-offset wrapping, and return the original allocation.
+Display_Menu_Choices_And_Check|Read and confirm a menu selection.|Draw the initial marker, read commands, XOR-erase and redraw on selection changes, and save the confirmed index.
+Keyboard_Convert_To_MoveCommands|Translate keyboard values into movement commands.|Use the native key mappings and return unrecognised WORD values unchanged.
+Advance_Far_Offset_1F3D|Advance a research FAR pointer without segment normalisation.|Add bytes to its WORD offset and preserve its segment.
+Wait_For_N_Vertical_Retraces|Wait for a number of display retraces.|Call the retrace-polling helper repeatedly using the native WORD count.
+Pending_Input|Check whether keyboard input is available.|Use the original live or attract-mode input state and return the native availability result.
+Display_Text_Dynamic_Value|Print an unsigned WORD value.|Format the value into the shared numeric string and send it to the text renderer.
+Draw_GraphicsFile_In_Memory|Copy a staged image rectangle onto the screen.|Keep the original buffer argument but use the retained EGA framebuffer-copy branch.
+Draw_EGA_Text_To_Screen|Draw a string using the EGA bitmap font.|Walk characters, find embedded glyph rows, and draw foreground and background pixels.
+Draw_Horizontal_EGA_Line|Fill an inclusive EGA rectangle.|Stage coordinates and colour and write its pixel spans without sorting or clipping; the legacy line name is misleading.
+Keyboard_Get_ASCII_Hex_Input|Read live input or the attract-demo stream.|Read the BIOS-style keyboard value or replay bytes, handling delay tokens and interruption.
+Draw_Clipped_Axis_Aligned_EGA_Line|Draw a clipped horizontal or vertical line.|Sort and clip endpoints, reject diagonal lines, and dispatch the matching EGA pixel run.
+Draw_EGA_Horizontal_Span_03EB|Draw a horizontal pixel span.|Split the span into edge masks and aligned groups and write the selected colour through EGA latches.
+Decompress_File_Into_Memory|Decode the game's packed graphics data.|Read compressed commands and copy literal or repeated output bytes into the destination buffer.
+Set_Palette_registers|Apply an EGA palette.|Pass the original palette values to the BIOS-style palette operation.
+Allocate_Far_Buffer_05BC|Allocate a native working buffer.|Allocate the low WORD byte count, report oversized or null results, and retain the unresolved oversize return path.
+Load_File_To_Memory|Load a complete original asset into a buffer.|Retry failed opens, read a two-byte payload length, read that many bytes into the buffer, and close without checking read status.
+EGA_DrawBox_Wrapper|Present the working world viewport.|Copy the native AC00 working rectangle to the A000 screen using the fixed viewport bounds.
+Capture_Combat_Sprite_070A|Allocate and capture one sprite snapshot.|Store its geometry header, copy its planar pixel rectangle, and publish the FAR pointer under the sprite ID.
+DOS_Load_File_to_memory|Read a requested number of file bytes.|Open the original filename, read into the supplied buffer, and close while preserving the native error contract.
+Wait_For_50Hz_Then_Check_Input|Apply the standard short presentation pause.|Wait the native retrace count and inspect input through the shared keyboard helpers.
+Sound_Setup_0002|Find and play a sound-effect record.|Skip sound records by their separators, decode tone or command entries, and call the appropriate sound generator.
+Sound_Operation_02A3|Repeat the selected fixed-tone effect.|Read shared tone parameters and call the fixed-tone generator for the requested repetition count.
+Sound_Operation_02EB|Repeat the selected seeded noise effect.|Read shared noise parameters and call the seeded toggle generator for each repetition.
+Sound_Operation_0345|Repeat the selected divisor-sweep effect.|Read shared sweep parameters and invoke the divisor sweep for each repetition.
+Sound_Operation_03A8|Repeat the descending noise-mask sweep.|Read the shared sweep bounds and invoke the descending parameter generator repeatedly.
+Sound_Operation_040B|Repeat the ascending noise-mask sweep.|Read the shared sweep bounds and invoke the ascending parameter generator repeatedly.
+A_Timer|Bind the sound timer operation.|Call the shared PIT setup helper used before speaker generation.
+Sound_Ptr_Operation_047B|Play a fixed tone for a calculated delay.|Enable a nonzero PIT divisor and run fifty calibrated delay passes; the parent wrapper switches the speaker off.
+A_PC_Speaker_OFF|Stop the effect speaker output.|Call the shared speaker-disable operation.
+Sound_Freq_Loop|Generate a masked-delay speaker noise sequence.|Build toggle delays from the countdown mask and minimum bits and toggle the speaker repeatedly.
+Sound_Operation_059A|Generate a seeded masked-delay noise sequence.|Seed the delay state, store the parameters, and repeat the native countdown and speaker-gate loop.
+Sound_Operation_0643|Sweep the speaker's pitch around a centre divisor.|Calculate native sweep limits and step the divisor while applying calibrated tone delays.
+Sound_Ptr_Multiply_06F6|Apply the native tone-delay arithmetic.|Use divisor and multiplier arithmetic, including its native register-width behaviour, to time speaker playback.
+Sound_Streaming_1|Generate a descending noise-mask sweep.|Move the mask from its start toward its stop and generate a noise sequence at each step.
+Sound_Streaming_2|Generate an ascending noise-mask sweep.|Move the mask upward toward its stop and generate a noise sequence at each step.
+Music_Note_To_Pit_Divisor_0139|Convert a music note to its speaker pitch divisor.|Index the original embedded note-divisor table using the native note interpretation.
+Music_Write_Pit_Divisor_00B2|Set the PC-speaker pitch.|Write the divisor's low and high bytes to the PIT channel.
+Music_Emit_Pc_Note_0187|Write the PC-speaker divisor for one music note.|Use divisor14 for a high-bit note, otherwise calculate pitch, then write both PIT bytes without changing the gate.
+Music_Emit_Tandy_Note_01B8|Send one music note to a Tandy channel.|Decode channel and note fields and write the native sound-chip command bytes.
+Music_Read_Stream_Byte|Read the next music-stream byte.|Read through the shared FAR cursor and advance its WORD offset without segment carry.
+Music_Start_Stream_0233|Start PC-speaker stream playback.|Store the FAR stream cursor and low-byte cadence, and make the first music tick immediately due.
+Music_Start_Tandy_Stream_020B|Start Tandy stream playback.|Initialise the stream cursor and cadence, then set volume3 on the three PSG tone channels.
+Music_Stop_Tandy_0160|Silence the Tandy music channels.|Write the native mute commands and stop or reset the associated playback state.
+Music_Tandy_Stream_Tick_024F|Process one Tandy music callback.|Read stream commands, apply cadence and termination controls, and emit channel notes.
+Music_Pc_Stream_Tick_0298|Process one PC-speaker music callback.|Read stream commands, apply cadence and termination controls, and emit speaker notes.
+Music_Clock_Tick_0020|Advance the game's music clock.|Run the music callback every IRQ, then test the old system-divider BYTE to chain IRQ0 or decrement and acknowledge it.
+Install_Music_Timer_0048|Install the original music timer hook.|Save the previous interrupt vector, initialise callback state, and bind the music clock handler.
+Restore_System_Timer_0091|Remove the game's music timer hook.|Restore the saved native interrupt vector and timer state.
+PC_Speaker_ON|Enable the PC speaker.|Set the required gate bits in the original speaker control port.
+PC_Speaker_00C6|Disable the PC speaker.|Clear the speaker gate bits in the original control port.
+PC_Speaker_Set_Value_0179|Stop PC-speaker music and select the idle callback.|Store idle callback offset0186 and clear the speaker gate without changing its divisor.
+Tandy_Music_Control_02E4|Dispatch Tandy music control requests.|Use the selector to start or stop the stream and preserve the native argument contract.
+PC_Speaker_Music_Control_0306|Dispatch PC-speaker music control requests.|Enable the speaker, call the selected stop/start setup entry, then store its paired interrupt-callback offset.
+Music_Playback_Finished_033C|Report whether the music stream has ended.|Inspect the native playback callback or completion state and return a WORD boolean.
+Set_Text_Colours_2127|Set the EGA text colours.|Store the supplied foreground and background bytes in shared font state.
+EGA_Draw_Vertical_Pixel_Run_05D0|Draw a vertical run of pixels.|Configure the EGA bit mask and write one pixel per screen row using native endpoint rules.
+EGA_Draw_Aligned_Span_0780|Draw aligned groups of horizontal pixels.|Set the full EGA mask and write successive byte-columns with the original unchecked count.
+EGA_Draw_Glyph_2251|Draw one embedded font glyph.|Read eight bitmap rows and paint foreground and complemented background masks through the EGA latches.
+Copy_Strided_Word_Rows_0931|Copy rows of WORD data between buffers.|Copy the BYTE-narrowed WORD count per row, keep the destination contiguous, and add the supplied source-row gap.
+Timer_8253_5|Configure the speaker PIT channel.|Write the original timer control command before sound generation.
+PC_Speaker_ON_ptr_freq|Start a speaker tone at the requested divisor.|Write both PIT divisor bytes and enable the speaker gate.
+PC_Speaker_OFF|Disable the shared effect speaker output.|Clear the native speaker control bits.
+PC_speaker_OFF_2|Prepare the speaker for software-gated noise.|Apply the original gate state used by the later toggle loop.
+PC_Speaker_XOR_ptr_freq|Toggle the speaker control bit.|Toggle speaker bit1, evolve the supplied delay seed, and leave that state in DX for the countdown helper.
+Sound_Freq_Countdown_Loop_00A9|Run the masked countdown delay used by noise effects.|Combine the mask and minimum delay and perform the native countdown loop.
+DOS_Select_Default_Drive_014C|Select the current DOS drive.|Call the native drive-selection service; replace it with asset-source selection in the port.
+DrawCall_Image_To_VGA_Memory|Convert a packed full-screen image into EGA memory.|Expand pixel nibbles into planar writes across the selected destination segment.
+DrawCall_Read_EGAMemory|Capture an EGA tile's plane bytes.|Read the selected screen rectangle one plane at a time into the FAR destination.
+DrawCall_EGA_CharacterPos_0377|Draw a clipped transparent sprite.|Read its dimensions, clip against screen bounds, and merge visible plane bytes into the destination.
+VGA_Inline_ASM_Loop|Convert packed sprite pixels into plane-interleaved bytes.|Consume packed nibble groups and rotate their bits into four plane accumulators.
+EGA_Animation_Bitshift|Distribute packed pixel bits into EGA planes.|Shift each pixel's colour bits into the supplied four plane accumulators.
+Get_Target_Compass_Direction|Determine the direction from one position to another.|Compare signed coordinate differences and select the native compass sector.
+Copy_From__Memory_Source_to_Dest|Copy a native count of WORDs between FAR buffers.|Copy WORDs in the direction selected by the incoming direction flag, with offset wrapping and native overlap behaviour.
+EGA_registers_0A9F|Upload an interleaved animated tile into EGA tile memory.|Read128 plane-interleaved bytes and write32 consecutive byte-columns at A400, restoring all write planes afterward.
+Wait_For_Retrace|Wait for the requested display-retrace phase.|Poll the native video-status port until its vertical-retrace state satisfies the operation.
+Keyboard_GetKey|Read a native keyboard command.|Call BIOS input, translate scan-code cases, and preserve the signed-byte to WORD result.
+Rand_0x00_to_0xFF|Generate the game's next random byte.|Update its three-byte random state and return the native byte result.
+Map_NextConstructionSeed_Research|Read the next procedural-map seed-table value.|Read through the seed index and increment only its low byte, preserving native wrap.
+Map_Noise_Research|Generate the construction algorithm's signed noise byte.|Use the seed and amplitude to reproduce the native perturbation calculation.
+Map_PerturbedMean_Research|Perturb a map-construction mean value.|Combine the mean and noise using the native byte-width arithmetic.
+Map_VerticalAmplitude_Research|Derive the vertical subdivision's noise amplitude.|Apply the native half-span arithmetic used by procedural construction.
+Map_Pos_Struct_Loop_Operations_0BFB|Build the initial procedural map grid.|Seed the native vertex data and run successive subdivision and interpolation passes.
+Map_Pos_0D07|Fill horizontal midpoints in the procedural map lattice.|Pop endpoint pairs, split right-first, and perturb missing midpoint means using the seed table.
+Map_Pos_0D79|Fill vertical midpoints in the procedural map lattice.|Pop endpoint pairs, split bottom-first, and perturb missing means with the native vertical amplitude.
+Map_Pos_0DF8|Complete the native procedural subdivision work.|Walk the remaining construction positions and preserve the original asymmetric neighbour calculations.
+Map_data_structure|Construct map descriptors around a region.|Select the centre region and generate its native terrain and adjacency data.
+Map_Memory_Research|Return the procedural map's working byte view.|Expose the reconstructed construction buffer rather than a new independently allocated map.
+Map_fn207F_11BB|Build adjacency selectors for one terrain-descriptor block.|Compare equal neighbours using edge helpers, or decode direct high-bit selectors, for all64 cells.
+Map_fn207F_12BA|Compare terrain along a descriptor's left edge.|Find the left neighbour, wrapping into the previous cached block, and compare native terrain bits.
+Map_Struct_internal_Ops_12D9|Compare terrain along a descriptor's right edge.|Find the right neighbour, wrapping into the next cached block, and compare native terrain bits.
+Map_Struct_Internal_Ops_2_12F2|Compare terrain along a descriptor's top edge.|Read the neighbour across the three-block-wide cache and combine its terrain bits with the supplied flags.
+Map_Struct_Internal_Ops_3_1303|Compare terrain along a descriptor's bottom edge.|Read the lower neighbour and combine its terrain bits with the supplied value and flags.
+PosXY_OffsetGrid|Build the24-by24 local tile view around a packed position.|Stage the position, expand nine neighbouring8-by8 blocks, and store each block's terrain metadata.
+PosXY_GridSegment|Expand one local map block into tile IDs.|Select neighbouring cache data, reflect its template, apply terrain tile IDs, and write eight strided rows.
+Map_RegenerateDescriptor_Research|Regenerate one cached map descriptor.|Invoke the reconstructed descriptor-building operations for its vertex and descriptor offsets.
+Map_ShiftDescriptorCache_Research|Move the descriptor cache in one direction.|Shift retained descriptor rows or columns and regenerate the newly exposed edge.
+Map_Position_Move_North_158C|Move the map cache north.|Shift descriptor and grid state and construct the new northern edge.
+Map_Position_Move_South_163B|Move the map cache south.|Shift descriptor and grid state and construct the new southern edge.
+Map_Position_Move_West_16E3|Move the map cache west.|Shift descriptor and grid state and construct the new western edge.
+Map_Position_Move_East_17C5|Move the map cache east.|Shift descriptor and grid state and construct the new eastern edge.
+Map_NineGrid_1886|Rebuild adjacency selectors for the nine cached regions.|Convert each64-byte terrain-descriptor block into its parallel64-byte adjacency block.
+Struct_Copy_Operation_18D8|Copy four map vertices into the construction lattice.|Copy corner BYTEs from a16-wide vertex grid to offsets0,8,48h,50h of the9-wide lattice.
+Copy_Data_To_GraphicsMemory|Render the cached world into the working framebuffer.|Walk visible map descriptors and copy their terrain tiles into the retained EGA buffer.
+Graphic_Memory_To_Destination|Copy the selected left or right half of a terrain tile.|Turn the tile BYTE into the native graphics index and call the single-column EGA transfer.
+Graphic_Memory_To_Destination_1ACE|Copy the bottom eight rows of a terrain tile.|Turn the tile BYTE into the native graphics index and call the lower-half EGA transfer.
+EGA_Memory_1AF4|Copy an EGA terrain tile.|Select its plane data and write the tile rows into the supplied destination segment and offset.
+EGA_Copy_A400_Memory_Word_Or_Byte_To_Destination_1B71|Copy two EGA byte-columns for eight or sixteen tile rows.|Resolve A400 source offset, test half-height, and perform two latch transfers per40-byte destination row.
+EGA_MemoryCopy_Byte_1BDF|Copy two EGA byte-columns from a tile's lower half.|Skip16 source bytes and transfer eight two-byte rows with40-byte destination stride.
+EGA_Copy_A400_Memory_Word_Or_Byte_To_Destination|Copy one selected EGA byte-column of a tile.|Select side, vertical half and height, then skip the other source column on each40-byte destination row.
+Map_NineGrid_Parent_1DA8|Rebuild cached adjacency data through a FAR entry.|Bind the map segment, call the nine-block adjacency converter, and restore caller registers.
+Update_Cached_Map_Origin_1DF8|Synchronise the cached map origin.|Derive local row and column from position BYTEs and store row-times24, column and combined cache index.
+Combat_1ECE|Save or restore the effects map cache.|Copy the native descriptor working area between shared state and the external buffer according to the flag.
+Overhead_Map_1F04|Reduce terrain into overhead-map pixels.|Read a descriptor's tile pattern and aggregate its native pixel groups into the reduced representation.
+Pack_Dynamic_Overhead_Tile_1F51|Pack a reduced overhead tile into graphics storage.|Collect the reduced colour values and write the selected dynamic tile's packed bytes.
+Graphics_Set_Screen_To_Black|Clear the retained EGA screen.|Configure plane writes and fill the native screen area with zero colour.
+EGA_DrawBox_Operation|Copy a framebuffer rectangle.|Walk its rows and copy the requested byte-column width between the supplied FAR graphics addresses.
+DrawCall_EGA_DrawBox_24D7|Copy a clipped EGA framebuffer rectangle.|Clip staged width and height, select latch-copy mode, and transfer rows between staged FAR buffers.
+DrawCall_SingleTile|Draw one menu or border tile.|Read the plane-interleaved tile data and copy its eight rows to the requested screen cell.
+DrawCall_Combat_Menu|Toggle a menu-selection rectangle.|Configure EGA XOR writes and apply the supplied colour across eight scanlines and the requested width.
+DOS_Text_ScanRemaining|Scan a FAR string up to its terminating NUL.|Advance the WORD offset and return the native remaining or scanned length used by string copying.
+DOS_Text_CopyBytes|Copy bytes between FAR string buffers.|Copy the requested byte count using the original offset-wrap rules.
+Append_Text_To_Memory|Append one NUL-terminated string to another.|Scan the destination terminator, copy the source including its terminator, and return the native destination pointer.
+Append_Large_Text_To_Memory|Copy a NUL-terminated string through the FAR string entry.|Copy the source including its terminator to the destination; the legacy Append name is misleading.
+Loop_Until_TextPtr_Null|Measure a NUL-terminated string.|Scan bytes until NUL and return the native WORD length.
+ASM_Text_Formatting_3BB6|Format a WORD as signed decimal or unsigned nondecimal text.|Sign-extend only radix ten, otherwise zero-extend, and pass the value to the shared conversion core.
+CBill_Text_Formatting|Format a multiword money value.|Split the value into native low and high WORDs and call the shared conversion core.
+Check_Input_For_Character|Check buffered input or DOS standard-input availability.|Return00FFh for a pending runtime-buffer character, otherwise ask DOS for status without consuming input.
+ASM_fn207F_3C15|Convert a multiword number into signed decimal or unsigned radix text.|Handle the optional decimal sign, divide WORD pairs, emit reversed digits and NUL, then reverse the digits in place.
+abs|Return a signed WORD's native absolute value.|Negate negative inputs with original 16-bit wrap, including the minimum signed value.
+Install_DOS_Interrupt_24_Handler_3C82|Install the original DOS critical-error handler.|Save or bind the native interrupt callback; replace it with host error handling in the port.
+ComStar_Stocks_multiplication|Multiply a stored stock value.|Apply the shared low-32-bit multiplication and write the result back through the supplied pointer.
+rotate_with_carry_do_while_parent|Divide a stored unsigned multiword value.|Call the native unsigned division model and write the quotient back to the supplied value.
+rotate_with_carry_loop_parent|Shift a stored unsigned multiword value.|Call the native shift model with the supplied count and write its result back.
+If_Arg_multiplication_return_func|Multiply two unsigned multiword values.|Combine 16-bit partial products and keep the original low 32-bit result.
+rotate_with_carry_do_while|Divide an unsigned 32-bit value by another.|Reproduce the native WORD-pair unsigned division and return the quotient.
+rotate_with_carry_loop_and_return|Shift a native 32-bit value.|Use the original low-byte count semantics and WORD-pair shifts to return the result.

@@ -1,0 +1,75 @@
+name: Preservation discrepancy or runtime bug
+description: Report behavior that differs from the supported DOS executable or a host-layer failure.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach original executables, game data, extracted assets, or save files. Describe the save slot and mission instead. Remove personal paths from traces.
+  - type: input
+    id: port_version
+    attributes:
+      label: Reimplementation version and commit
+      description: Include the output of the executable's --version option and the Git commit.
+      placeholder: "1.0.0; commit abc1234"
+    validations:
+      required: true
+  - type: input
+    id: original_hash
+    attributes:
+      label: Original executable SHA-256
+      description: Identify the legally obtained DOS executable without uploading it.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Platform and toolchain
+      placeholder: "Windows 11 x64; Visual Studio 2022 17.x"
+    validations:
+      required: true
+  - type: input
+    id: game_location
+    attributes:
+      label: Campaign location
+      description: Mission, stage, screen and save-slot name/number. Do not attach the save.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Give the smallest repeatable sequence of inputs.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: dos_behavior
+    attributes:
+      label: Expected or original DOS behavior
+      description: State how this was verified (original executable, assembly address, annotation, or other evidence).
+    validations:
+      required: true
+  - type: textarea
+    id: trace
+    attributes:
+      label: Sanitized trace or crash details
+      description: Paste text logs only. Remove personal paths and do not include binary data.
+      render: text
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Submission checklist
+      options:
+        - label: I used a supported original executable profile or clearly identified a different one.
+          required: true
+        - label: I did not attach original executables, game assets, extracted media, or save files.
+          required: true
+        - label: I checked the documented known limitations.
+          required: true
