@@ -92,7 +92,7 @@ int main(void){
  CombatantScreenPixelX[4]=120;CombatantScreenPixelY[4]=100;
  CombatantScreenPixelX[16]=148;CombatantScreenPixelY[16]=100;
  Combat_AudioVisual_Effects(4,16,WeaponIndex_LaserPistol,2,FALSE,FALSE,FALSE,8,FALSE,savedMap);
- check(lines==24 && sprites==0 && soundCount==1 && sounds[0]==Sound_LaserUnknown);
+ check(lines==24 && sprites==0 && soundCount==1 && sounds[0]==Sound_PersonnelLaser);
  reset();CombatantVisibleOnScreen[4]=CombatantVisibleOnScreen[16]=TRUE;
  CombatantScreenPixelX[4]=120;CombatantScreenPixelY[4]=100;
  CombatantScreenPixelX[16]=148;CombatantScreenPixelY[16]=100;

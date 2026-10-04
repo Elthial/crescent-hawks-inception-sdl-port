@@ -795,10 +795,10 @@ enum { MainCharacterCount=2,CombatTargetIdMask=0x7F,
     Sprite_Impact_Large=127,Sprite_Locust_Wreck=128,Sprite_Commando_Wreck=129,
     MissileAnimationSpriteBase=104,ProjectileImpactSpriteBase=250,
     AnimationO01_ManPadVsMech=1,AnimationO03_CockpitHit=3,AnimationO04_LocustFiring=4,
-    EGA_Cyan=3,EGA_Magenta=5,Sound_Missile=1,Sound_KickUnknown=2,
+    EGA_Cyan=3,EGA_Magenta=5,Sound_Missile=1,Sound_MechEnergyWeapon=2,
     Sound_RepeatingProjectile=3,Sound_InfantryUnknown=4,Sound_VibroBlade=5,
     Sound_SingleShotProjectile=6,Sound_ArenaDestroyedUnknown=7,
-    Sound_TerrainDamageUnknown=8,Sound_LaserUnknown=9,Sound_BowString=11,Sound_BladeImpact=13 };
+    Sound_TerrainDamageUnknown=8,Sound_PersonnelLaser=9,Sound_BowString=11,Sound_BladeImpact=13 };
 extern uint8_t *KuritaMissionTextMessages[5]; /*3EDB:3A2E*/
 void Combat_Move_Position(uint16_t x,uint16_t y); /*0800:186F*/
 void Salvage_Armour_Dialog(void); /*0DAB:0002; SRM-6 stack bucket unsupported*/

@@ -31,14 +31,14 @@ the numeric IDs, table starts, and command sequences are verified.
 | ID | Tool name | Table start | Probable use |
 |---:|---|---|---|
 | `0x01` | `missile` | `3EDB:5008` | Missile launch or flight. |
-| `0x02` | `mech-kick` | `3EDB:501C` | Mech kick. |
+| `0x02` | `mech-energy-weapon` | `3EDB:501C` | BattleMech laser/PPC; confirmed at 1AE8:19EA..19FE, not a kick sound. |
 | `0x03` | `repeating-projectile` | `3EDB:5030` | Repeating projectile weapon. |
 | `0x04` | `infantry-impact` | `3EDB:5044` | Infantry combat impact/noise. |
 | `0x05` | `vibroblade` | `3EDB:5058` | Vibroblade. |
 | `0x06` | `single-shot-projectile` | `3EDB:506C` | Single-shot projectile weapon. |
 | `0x07` | `arena-destruction` | `3EDB:5096` | Arena destruction. |
 | `0x08` | `terrain-damage` | `3EDB:50B8` | Terrain damage. |
-| `0x09` | `laser` | `3EDB:50E8` | Laser weapon. |
+| `0x09` | `personnel-laser` | `3EDB:50E8` | Personnel laser pistol/rifle; confirmed at 1AE8:19EA..19FE. |
 | `0x0A` | `cache-door` | `3EDB:50FC` | Star League cache grinding door. |
 | `0x0B` | `bow-string` | `3EDB:5110` | Bow string. |
 | `0x0C` | `mech-startup` | `3EDB:5140` | Successful mech startup. |

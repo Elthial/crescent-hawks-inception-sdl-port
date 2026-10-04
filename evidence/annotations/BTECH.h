@@ -233,14 +233,14 @@ unsigned long rotate_with_carry_loop_and_return(unsigned long Value, unsigned sh
 #define SoundFixedToneDelayPassCount 50 // Sol:1FC5:04D3 fixed outer busy-wait passes, not milliseconds/Hz
 #define SoundNoiseDefaultToggleSeed 1000 // Sol:04F1 initializes398A to1000 as007D delay-state seed, not Hz or a stream command
 #define Sound_Missile                     0x01
-#define Sound_KickUnknown                 0x02
+#define Sound_MechEnergyWeapon            0x02 // 1AE8:19EA..19FE: BattleMech lasers and PPC, not kicks.
 #define Sound_RepeatingProjectile         0x03
 #define Sound_InfantryUnknown             0x04
 #define Sound_VibroBlade                  0x05
 #define Sound_SingleShotProjectile        0x06
 #define Sound_ArenaDestroyedUnknown       0x07
 #define Sound_TerrainDamageUnknown        0x08
-#define Sound_LaserUnknown                0x09
+#define Sound_PersonnelLaser              0x09 // 1AE8:19EA..19FE: personnel laser pistol/rifle.
 #define Sound_CacheUnknown                0x0A  //If start of Cache then Grinding Door open sound
 #define Sound_BowString                   0x0B
 #define Sound_MechStartUp                 0x0C

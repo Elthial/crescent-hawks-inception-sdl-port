@@ -1029,7 +1029,7 @@ SelectMissileImpactAnimation:
 	}
 PlayNonMissileAttackSound:
 	if (EffectType != WeaponType_Missile)
-		Play_Sound_If_Enabled(UsePersonnelLaserSound ? Sound_LaserUnknown : Sound_KickUnknown); // Sol: original sound9 versus2, even for mech laser/PPC.
+		Play_Sound_If_Enabled(UsePersonnelLaserSound ? Sound_PersonnelLaser : Sound_MechEnergyWeapon); // Sol: original sound9 versus2, even for mech laser/PPC.
 RenderAttackImpact:
 	if (AttackApplied == FALSE) // Sol: actually attack-hit/applied flag, not on-foot state.
 		Combat_AudioVisual_MechPositioning_And_GraphicsMemory_1F09(SavedCombatMap);

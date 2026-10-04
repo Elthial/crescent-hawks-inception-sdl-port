@@ -318,7 +318,7 @@ Remove_Casualties:
 	}
 Play_Beam_Sound:
 	if (EffectType != AttackEffect_Missile)
-		Play_Sound_If_Enabled(UsePersonnelLaserSound ? Sound_LaserUnknown : Sound_KickUnknown);
+		Play_Sound_If_Enabled(UsePersonnelLaserSound ? Sound_PersonnelLaser : Sound_MechEnergyWeapon);
 Play_Target_Impact:
 	if (AttackApplied == FALSE)
 		Combat_Restore_Map_View_And_Draw_World(SavedCombatMap);
